@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B458B4F0-8D32-4623-91FD-1C8F20C443F3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CrudBarrioFrom</RootNamespace>
+    <AssemblyName>CrudBarrioFrom</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddCasaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddCasaForm.Designer.cs">
+      <DependentUpon>AddCasaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddExterior.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddExterior.Designer.cs">
+      <DependentUpon>AddExterior.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddMascota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddMascota.Designer.cs">
+      <DependentUpon>AddMascota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddMueble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddMueble.Designer.cs">
+      <DependentUpon>AddMueble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\CasaInformacionCompleta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\CasaInformacionCompleta.Designer.cs">
+      <DependentUpon>CasaInformacionCompleta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\FmExterior.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\FmExterior.Designer.cs">
+      <DependentUpon>FmExterior.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\FmHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\FmHabitacion.Designer.cs">
+      <DependentUpon>FmHabitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\FmHijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\FmHijo.Designer.cs">
+      <DependentUpon>FmHijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\FmMascota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\FmMascota.Designer.cs">
+      <DependentUpon>FmMascota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\FmMuebles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\FmMuebles.Designer.cs">
+      <DependentUpon>FmMuebles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\FmPadre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\FmPadre.Designer.cs">
+      <DependentUpon>FmPadre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\FmServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\FmServicio.Designer.cs">
+      <DependentUpon>FmServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddPadreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddPadreForm.Designer.cs">
+      <DependentUpon>AddPadreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddHijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddHijo.Designer.cs">
+      <DependentUpon>AddHijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddHabitacion.Designer.cs">
+      <DependentUpon>AddHabitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddExterior.resx">
+      <DependentUpon>AddExterior.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddHijo.resx">
+      <DependentUpon>AddHijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddMascota.resx">
+      <DependentUpon>AddMascota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddMueble.resx">
+      <DependentUpon>AddMueble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddPadreForm.resx">
+      <DependentUpon>AddPadreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddCasaForm.resx">
+      <DependentUpon>AddCasaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\CasaInformacionCompleta.resx">
+      <DependentUpon>CasaInformacionCompleta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\FmExterior.resx">
+      <DependentUpon>FmExterior.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\FmHabitacion.resx">
+      <DependentUpon>FmHabitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\FmHijo.resx">
+      <DependentUpon>FmHijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\FmMascota.resx">
+      <DependentUpon>FmMascota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\FmMuebles.resx">
+      <DependentUpon>FmMuebles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\FmPadre.resx">
+      <DependentUpon>FmPadre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\FmServicio.resx">
+      <DependentUpon>FmServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddHabitacion.resx">
+      <DependentUpon>AddHabitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\father.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\cancel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\children.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\guardar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\house.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\review.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\services.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
