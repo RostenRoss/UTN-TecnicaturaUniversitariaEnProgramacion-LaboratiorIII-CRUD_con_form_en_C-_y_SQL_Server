@@ -15,22 +15,17 @@ namespace CrudBarrioFrom.presentacion
         public long id;
         public FmServicio grilla;
 
-        public AddServicioCable(long id, FmServicio grilla)
-        {
-            InitializeComponent();
-            this.id = id;
-            this.grilla = grilla;
-        }
-        public AddServicioCable()
+        
+        public AddServicioCable(FmServicio grilla)
         {
             InitializeComponent();
             this.id = 0;
+            this.grilla = grilla;
         }
 
         private void AddServicioCable_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSet1.servicioCable' Puede moverla o quitarla según sea necesario.
-            this.servicioCableTableAdapter.Fill(this.dataSet1.servicioCable);
 
         }
 
@@ -56,7 +51,8 @@ namespace CrudBarrioFrom.presentacion
                 this.servicioCableTableAdapter.InsertServicioCable(tipoTextBox.Text, esHdCheckBox.Checked, Double.Parse(precioTextBox.Text), 
                     empresaTextBox.Text, Double.Parse(limiteDeDatosTextBox.Text), 
                     DateTime.Parse(fechaInstaladoDateTimePicker.Text), long.Parse(id_casaTextBox.Text));
-            }            
+            }
+            this.grilla.refrescar();
             this.Close();
         }
 

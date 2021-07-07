@@ -13,8 +13,8 @@ namespace CrudBarrioFrom.presentacion
     public partial class AddHijo : Form
     {
         private long id;
-        private Form grilla;
-        public AddHijo(long id, Form grilla)
+        private FmHijo grilla;
+        public AddHijo(long id, FmHijo grilla)
         {
             InitializeComponent();
             this.id = id;
@@ -56,6 +56,7 @@ namespace CrudBarrioFrom.presentacion
                 this.hijosTableAdapter.UpdateHijo(nombreTextBox.Text, int.Parse(gradoEscuelaTextBox.Text), 
                                 sexoCheckBox.Checked, int.Parse(edadTextBox.Text), DateTime.Parse(fechaNacimientoDateTimePicker.Text),
                                 long.Parse(id_padreTextBox.Text), long.Parse(id_casaTextBox.Text), this.id);
+                this.grilla.refrescarForm();
             }
 
             this.Close();

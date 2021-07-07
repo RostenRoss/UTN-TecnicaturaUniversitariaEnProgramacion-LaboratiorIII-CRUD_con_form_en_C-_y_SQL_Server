@@ -15,16 +15,11 @@ namespace CrudBarrioFrom.presentacion
         public long id;
         public FmServicio grilla;
 
-        public AddServicioInternet(long id, FmServicio grilla)
+        public AddServicioInternet(FmServicio grilla)
         {
             InitializeComponent();
-            this.id = id;
+            this.id = 0; 
             this.grilla = grilla;
-        }
-        public AddServicioInternet()
-        {
-            InitializeComponent();
-            this.id = 0;
         }
 
         private void servicioInternetBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -38,7 +33,7 @@ namespace CrudBarrioFrom.presentacion
         private void AddServicioInternet_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSet1.servicioInternet' Puede moverla o quitarla según sea necesario.
-            this.servicioInternetTableAdapter.Fill(this.dataSet1.servicioInternet);
+
 
         }
 
@@ -48,9 +43,10 @@ namespace CrudBarrioFrom.presentacion
             {
                 long casa_id = long.Parse(id_casaTextBox.Text);
                 this.servicioInternetTableAdapter.InsertServicioInternet(tipoTextBox.Text, int.Parse(velocidadTextBox.Text),
-                    Double.Parse(precioTextBox.Text), empresaTextBox.Text, limiteDeDatosTextBox.Text, 
+                    float.Parse(precioTextBox.Text), empresaTextBox.Text, limiteDeDatosTextBox.Text, 
                     DateTime.Parse(fechaInstaladoDateTimePicker.Text), long.Parse(id_casaTextBox.Text));
             }
+            this.grilla.refrescar();
             this.Close();
         }
 

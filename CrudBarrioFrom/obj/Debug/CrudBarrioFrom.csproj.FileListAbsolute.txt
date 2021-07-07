@@ -1,3 +1,6 @@
+D:\C#\CrudBarrioForm\CrudBarrioFrom\bin\Debug\CrudBarrioFrom.exe.config
+D:\C#\CrudBarrioForm\CrudBarrioFrom\bin\Debug\CrudBarrioFrom.exe
+D:\C#\CrudBarrioForm\CrudBarrioFrom\bin\Debug\CrudBarrioFrom.pdb
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.Form1.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddExterior.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddHijo.resources
@@ -5,6 +8,10 @@ D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddMas
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddMueble.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddPadreForm.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddCasaForm.resources
+D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioAgua.resources
+D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioCable.resources
+D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioInternet.resources
+D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioLuz.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.CasaInformacionCompleta.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.FmExterior.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.FmHabitacion.resources
@@ -17,12 +24,5 @@ D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddHab
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.Properties.Resources.resources
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.csproj.GenerateResource.cache
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.csproj.CoreCompileInputs.cache
-D:\C#\CrudBarrioForm\CrudBarrioFrom\bin\Debug\CrudBarrioFrom.exe.config
-D:\C#\CrudBarrioForm\CrudBarrioFrom\bin\Debug\CrudBarrioFrom.exe
-D:\C#\CrudBarrioForm\CrudBarrioFrom\bin\Debug\CrudBarrioFrom.pdb
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.exe
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.pdb
-D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioLuz.resources
-D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioCable.resources
-D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioAgua.resources
-D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.presentacion.AddServicioInternet.resources

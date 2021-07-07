@@ -222,7 +222,8 @@ namespace CrudBarrioFrom.presentacion
         private void agregarButton_Click(object sender, EventArgs e)
         {
             AddExterior agregarPadre = new AddExterior(this);
-            agregarPadre.ShowDialog();            
+            agregarPadre.ShowDialog();
+            this.refrescar();
         }
     }
 }

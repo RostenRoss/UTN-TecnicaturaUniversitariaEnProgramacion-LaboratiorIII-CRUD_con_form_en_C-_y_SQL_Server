@@ -55,15 +55,14 @@ namespace CrudBarrioFrom.presentacion
             {
                 long casa_id = long.Parse(id_casaTextBox.Text);
                 this.exteriorTableAdapter.InsertExterior(tipoTextBox.Text, Double.Parse(metrosCuadradosTextBox.Text), 
-                    long.Parse(id_casaTextBox.Text));
+                long.Parse(id_casaTextBox.Text));
             }
             else
             {
                 this.exteriorTableAdapter.UpdateExterior(tipoTextBox.Text, long.Parse(id_casaTextBox.Text), 
-                    Double.Parse(metrosCuadradosTextBox.Text), this.id);
-
+                Double.Parse(metrosCuadradosTextBox.Text), this.id);
+                grilla.refrescarGrilla();
             }
-            grilla.refrescarGrilla();
             this.Close();
         }
 

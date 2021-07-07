@@ -109,7 +109,7 @@ namespace CrudBarrioFrom.presentacion
             this.cancelarButon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cancelarButon.BackgroundImage")));
             this.cancelarButon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.cancelarButon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cancelarButon.Location = new System.Drawing.Point(225, 164);
+            this.cancelarButon.Location = new System.Drawing.Point(226, 164);
             this.cancelarButon.Name = "cancelarButon";
             this.cancelarButon.Size = new System.Drawing.Size(71, 57);
             this.cancelarButon.TabIndex = 9;

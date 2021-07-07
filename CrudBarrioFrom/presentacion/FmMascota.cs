@@ -213,6 +213,10 @@ namespace CrudBarrioFrom.presentacion
             }
         }
 
+        public void refrescarGrilla()
+        {
+            this.refrescar();
+        }
         private void agregarButton_Click(object sender, EventArgs e)
         {
             AddMascota agregarMascota = new AddMascota();

@@ -68,8 +68,8 @@ namespace CrudBarrioFrom.presentacion
                 {
                     this.mueblesTableAdapter.UpdateMuebleExterior(nombreTextBox.Text, long.Parse(id_exteriorTextBox.Text), this.id);
                 }
+                this.grilla.refrescarGrilla();
             }
-            this.grilla.refrescarGrilla();
             this.Close();
         }
 

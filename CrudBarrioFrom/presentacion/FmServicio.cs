@@ -129,14 +129,10 @@ namespace CrudBarrioFrom.presentacion
         private void agergarBotones() 
         {
             DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
-            DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn();
-            DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
+;
             btnDelete.Name = "Eliminar";
-            btnEditar.Name = "Editar";
-            btnVer.Name = "Ver";
-            this.serviciosGridView.Columns.Add(btnDelete);
-            this.serviciosGridView.Columns.Add(btnEditar);
-            this.serviciosGridView.Columns.Add(btnVer);
+      
+            this.serviciosGridView.Columns.Add(btnDelete);           
         }
 
         private void rellenarCaja()
@@ -162,6 +158,10 @@ namespace CrudBarrioFrom.presentacion
                     break;
             }
            
+        }
+        public void refrescar()
+        {
+            this.rellenarCaja();
         }
 
         private void cableServBtn_Click(object sender, EventArgs e)
@@ -207,33 +207,6 @@ namespace CrudBarrioFrom.presentacion
                 e.Handled = true;
             }
 
-            if (e.ColumnIndex >= 0 && this.serviciosGridView.Columns[e.ColumnIndex].Name == "Editar" && e.RowIndex >= 0)
-            {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                DataGridViewButtonCell editarButton = this.serviciosGridView.Rows[e.RowIndex].Cells["Editar"] as DataGridViewButtonCell;
-
-                Icon iconEdit = new Icon(Environment.CurrentDirectory + @"\\edit.ico");
-                e.Graphics.DrawIcon(iconEdit, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
-                this.serviciosGridView.Rows[e.RowIndex].Height = iconEdit.Height + 8;
-                this.serviciosGridView.Columns[e.ColumnIndex].Width = iconEdit.Width + 8;
-
-                e.Handled = true;
-            }
-
-            if (e.ColumnIndex >= 0 && this.serviciosGridView.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex >= 0)
-            {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                DataGridViewButtonCell verButton = this.serviciosGridView.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
-
-                Icon iconReview = new Icon(Environment.CurrentDirectory + @"\\review.ico");
-                e.Graphics.DrawIcon(iconReview, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
-                this.serviciosGridView.Rows[e.RowIndex].Height = iconReview.Height + 8;
-                this.serviciosGridView.Columns[e.ColumnIndex].Width = iconReview.Width + 8;
-
-                e.Handled = true;
-            }
         }
         private long getId()
         {
@@ -259,27 +232,7 @@ namespace CrudBarrioFrom.presentacion
                     rellenarCaja();
                 }
             }
-
-            if (this.serviciosGridView.Columns[e.ColumnIndex].Name == "Editar")
-            {
-                long id = getId();
-                if (id != 0)
-                {
-                    /*AddCasaForm casaForm = new AddCasaForm(id, this);
-                    casaForm.ShowDialog();*/
-                }
-                rellenarCaja();
-            }
-
-            if (this.serviciosGridView.Columns[e.ColumnIndex].Name == "Ver")
-            {
-                long id = getId();
-                if (id != 0)
-                {
-                   /* CasaInformacionCompleta casaInfo = new CasaInformacionCompleta(id);
-                    casaInfo.ShowDialog();*/
-                }
-            }
+           
         }
 
         private void agregarButton_Click(object sender, EventArgs e)
@@ -288,23 +241,22 @@ namespace CrudBarrioFrom.presentacion
             {
                 case 1:
                     
-                    AddServicioLuz agregarLuz = new AddServicioLuz();
+                    AddServicioLuz agregarLuz = new AddServicioLuz(this);
                     agregarLuz.ShowDialog();
                     break;
                 case 2:
-                    AddServicioCable agregarCable = new AddServicioCable();
+                    AddServicioCable agregarCable = new AddServicioCable(this);
                     agregarCable.ShowDialog();
                     break;
                 case 3:
-                    AddServicioAgua agregarAgua = new AddServicioAgua();
+                    AddServicioAgua agregarAgua = new AddServicioAgua(this);
                     agregarAgua.ShowDialog();
                     break;
                 case 4:
-                    AddServicioInternet agregarInternet = new AddServicioInternet();
+                    AddServicioInternet agregarInternet = new AddServicioInternet(this);
                     agregarInternet.ShowDialog();
                     break;
             }
-            rellenarCaja();
         }
     }
 }
