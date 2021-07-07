@@ -120,8 +120,9 @@ namespace CrudBarrioFrom.presentacion
 
         private void casas_Click(object sender, EventArgs e)
         {
+            
             this.principal.Show();
-            if (((Button)sender).Name == servicesBtn.Name)
+            if (((Button)sender).Name == casasBtn.Name)
             {
                 this.cerrarBoton = ((Button)sender).Name;
             }
@@ -157,7 +158,7 @@ namespace CrudBarrioFrom.presentacion
                 long id = getId();
                 if (id != 0)
                 {
-                    AddHijo agregarPadreFm = new AddHijo(id, this);
+                    AddHabitacion agregarPadreFm = new AddHabitacion(id, this);
                     agregarPadreFm.ShowDialog();
                 }
                 refrescar();
@@ -212,6 +213,15 @@ namespace CrudBarrioFrom.presentacion
         {
             this.habitacionTableAdapter.Fill(this.dataSet1.habitacion);
 
+        }
+
+        public void refrescarGrilla() { refrescar(); }
+
+        private void agregarButton_Click(object sender, EventArgs e)
+        {
+            AddHabitacion agregarHabitacion = new AddHabitacion();
+            agregarHabitacion.ShowDialog();
+            refrescar();
         }
     }
 }

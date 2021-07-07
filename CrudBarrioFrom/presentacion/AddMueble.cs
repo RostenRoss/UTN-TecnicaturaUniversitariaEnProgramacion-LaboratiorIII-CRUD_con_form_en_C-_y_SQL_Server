@@ -13,15 +13,16 @@ namespace CrudBarrioFrom.presentacion
     public partial class AddMueble : Form
     {
         long id=0;
-        //Form grilla;
+        FmMuebles grilla;
         public AddMueble()
         {
             InitializeComponent();
         }
-        public AddMueble(long id)
+        public AddMueble(long id, FmMuebles grilla)
         {
             InitializeComponent();
             this.id= id;
+            this.grilla = grilla;
         }
 
         private void mueblesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -49,14 +50,31 @@ namespace CrudBarrioFrom.presentacion
         {
             if (id == 0)
             {
-                this.mueblesTableAdapter.InsertMueble(nombreTextBox.Text, long.Parse(id_lugarTextBox.Text));
-
+                if (id_exteriorTextBox.Text == "" || id_exteriorTextBox.Text == null)
+                {
+                    this.mueblesTableAdapter.InsertMuebleEnHabitacion(nombreTextBox.Text, long.Parse(id_habitacionTextBox.Text));
+                }
+                else 
+                {
+                    this.mueblesTableAdapter.InsertMuebleEnExterior(nombreTextBox.Text, long.Parse(id_exteriorTextBox.Text));
+                }
             }
             else
             {
-                this.mueblesTableAdapter.UpdateMueble(nombreTextBox.Text,long.Parse(id_lugarTextBox.Text), this.id);
+                if (id_exteriorTextBox.Text == "" || id_exteriorTextBox.Text == null)
+                {
+                    this.mueblesTableAdapter.UpdateMuebleHabitacion(nombreTextBox.Text, long.Parse(id_habitacionTextBox.Text), this.id);
+                }else
+                {
+                    this.mueblesTableAdapter.UpdateMuebleExterior(nombreTextBox.Text, long.Parse(id_exteriorTextBox.Text), this.id);
+                }
             }
+            this.grilla.refrescarGrilla();
+            this.Close();
+        }
 
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

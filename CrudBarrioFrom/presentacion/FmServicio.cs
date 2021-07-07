@@ -281,5 +281,30 @@ namespace CrudBarrioFrom.presentacion
                 }
             }
         }
+
+        private void agregarButton_Click(object sender, EventArgs e)
+        {            
+            switch (this.tipoServicio)
+            {
+                case 1:
+                    
+                    AddServicioLuz agregarLuz = new AddServicioLuz();
+                    agregarLuz.ShowDialog();
+                    break;
+                case 2:
+                    AddServicioCable agregarCable = new AddServicioCable();
+                    agregarCable.ShowDialog();
+                    break;
+                case 3:
+                    AddServicioAgua agregarAgua = new AddServicioAgua();
+                    agregarAgua.ShowDialog();
+                    break;
+                case 4:
+                    AddServicioInternet agregarInternet = new AddServicioInternet();
+                    agregarInternet.ShowDialog();
+                    break;
+            }
+            rellenarCaja();
+        }
     }
 }

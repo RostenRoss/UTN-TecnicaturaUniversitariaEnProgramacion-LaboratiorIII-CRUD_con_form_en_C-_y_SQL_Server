@@ -101,6 +101,7 @@ namespace CrudBarrioFrom.presentacion
             this.agregarButton.TabIndex = 0;
             this.agregarButton.Tag = "";
             this.agregarButton.UseVisualStyleBackColor = false;
+            this.agregarButton.Click += new System.EventHandler(this.agregarButton_Click);
             // 
             // mueblesBtn
             // 

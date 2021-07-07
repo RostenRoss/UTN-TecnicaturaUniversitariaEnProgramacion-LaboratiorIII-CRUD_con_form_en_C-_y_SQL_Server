@@ -158,7 +158,7 @@ namespace CrudBarrioFrom.presentacion
      
         private void agregarButton_Click(object sender, EventArgs e)
         {
-            AddMueble addMueble = new AddMueble(getId());
+            AddMueble addMueble = new AddMueble();
             addMueble.ShowDialog();
             refrescar();
 
@@ -182,7 +182,7 @@ namespace CrudBarrioFrom.presentacion
                 long id = getId();
                 if (id != 0)
                 {
-                    AddHijo agregarPadreFm = new AddHijo(id, this);
+                    AddMueble agregarPadreFm = new AddMueble(id, this);
                     agregarPadreFm.ShowDialog();
                 }
                 refrescar();
@@ -220,6 +220,11 @@ namespace CrudBarrioFrom.presentacion
 
                 e.Handled = true;
             }
+        }
+
+        public void refrescarGrilla()
+        {
+            this.refrescar();
         }
     }
 }

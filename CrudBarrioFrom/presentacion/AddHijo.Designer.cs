@@ -62,6 +62,70 @@ namespace CrudBarrioFrom.presentacion
             ((System.ComponentModel.ISupportInitialize)(this.hijosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(25, 26);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(45, 13);
+            nombreLabel.TabIndex = 3;
+            nombreLabel.Text = "nombre:";
+            // 
+            // gradoEscuelaLabel
+            // 
+            gradoEscuelaLabel.AutoSize = true;
+            gradoEscuelaLabel.Location = new System.Drawing.Point(25, 52);
+            gradoEscuelaLabel.Name = "gradoEscuelaLabel";
+            gradoEscuelaLabel.Size = new System.Drawing.Size(78, 13);
+            gradoEscuelaLabel.TabIndex = 5;
+            gradoEscuelaLabel.Text = "grado Escuela:";
+            // 
+            // sexoLabel
+            // 
+            sexoLabel.AutoSize = true;
+            sexoLabel.Location = new System.Drawing.Point(25, 80);
+            sexoLabel.Name = "sexoLabel";
+            sexoLabel.Size = new System.Drawing.Size(56, 13);
+            sexoLabel.TabIndex = 7;
+            sexoLabel.Text = "Femenino:";
+            sexoLabel.Click += new System.EventHandler(this.sexoLabel_Click);
+            // 
+            // edadLabel
+            // 
+            edadLabel.AutoSize = true;
+            edadLabel.Location = new System.Drawing.Point(25, 108);
+            edadLabel.Name = "edadLabel";
+            edadLabel.Size = new System.Drawing.Size(34, 13);
+            edadLabel.TabIndex = 9;
+            edadLabel.Text = "edad:";
+            // 
+            // fechaNacimientoLabel
+            // 
+            fechaNacimientoLabel.AutoSize = true;
+            fechaNacimientoLabel.Location = new System.Drawing.Point(25, 135);
+            fechaNacimientoLabel.Name = "fechaNacimientoLabel";
+            fechaNacimientoLabel.Size = new System.Drawing.Size(93, 13);
+            fechaNacimientoLabel.TabIndex = 11;
+            fechaNacimientoLabel.Text = "fecha Nacimiento:";
+            // 
+            // id_padreLabel
+            // 
+            id_padreLabel.AutoSize = true;
+            id_padreLabel.Location = new System.Drawing.Point(25, 160);
+            id_padreLabel.Name = "id_padreLabel";
+            id_padreLabel.Size = new System.Drawing.Size(48, 13);
+            id_padreLabel.TabIndex = 13;
+            id_padreLabel.Text = "id padre:";
+            // 
+            // id_casaLabel
+            // 
+            id_casaLabel.AutoSize = true;
+            id_casaLabel.Location = new System.Drawing.Point(25, 186);
+            id_casaLabel.Name = "id_casaLabel";
+            id_casaLabel.Size = new System.Drawing.Size(44, 13);
+            id_casaLabel.TabIndex = 15;
+            id_casaLabel.Text = "id casa:";
+            // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "DataSet1";
@@ -80,9 +144,9 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.casasTableAdapter = null;
+            this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.exteriorTableAdapter = null;
             this.tableAdapterManager.habitacionTableAdapter = null;
-            //this.tableAdapterManager.hijosTableAdapter = this.hijosTableAdapter;
             this.tableAdapterManager.mascotaTableAdapter = null;
             this.tableAdapterManager.mueblesTableAdapter = null;
             this.tableAdapterManager.padresTableAdapter = null;
@@ -92,15 +156,6 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager.servicioInternetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CrudBarrioFrom.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // nombreLabel
-            // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(25, 26);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(45, 13);
-            nombreLabel.TabIndex = 3;
-            nombreLabel.Text = "nombre:";
-            // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.hijosBindingSource, "nombre", true));
@@ -108,15 +163,6 @@ namespace CrudBarrioFrom.presentacion
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(200, 20);
             this.nombreTextBox.TabIndex = 4;
-            // 
-            // gradoEscuelaLabel
-            // 
-            gradoEscuelaLabel.AutoSize = true;
-            gradoEscuelaLabel.Location = new System.Drawing.Point(25, 52);
-            gradoEscuelaLabel.Name = "gradoEscuelaLabel";
-            gradoEscuelaLabel.Size = new System.Drawing.Size(78, 13);
-            gradoEscuelaLabel.TabIndex = 5;
-            gradoEscuelaLabel.Text = "grado Escuela:";
             // 
             // gradoEscuelaTextBox
             // 
@@ -126,15 +172,6 @@ namespace CrudBarrioFrom.presentacion
             this.gradoEscuelaTextBox.Size = new System.Drawing.Size(200, 20);
             this.gradoEscuelaTextBox.TabIndex = 6;
             // 
-            // sexoLabel
-            // 
-            sexoLabel.AutoSize = true;
-            sexoLabel.Location = new System.Drawing.Point(25, 80);
-            sexoLabel.Name = "sexoLabel";
-            sexoLabel.Size = new System.Drawing.Size(32, 13);
-            sexoLabel.TabIndex = 7;
-            sexoLabel.Text = "sexo:";
-            // 
             // sexoCheckBox
             // 
             this.sexoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.hijosBindingSource, "sexo", true));
@@ -142,17 +179,7 @@ namespace CrudBarrioFrom.presentacion
             this.sexoCheckBox.Name = "sexoCheckBox";
             this.sexoCheckBox.Size = new System.Drawing.Size(200, 24);
             this.sexoCheckBox.TabIndex = 8;
-            this.sexoCheckBox.Text = "hombre/ mujer";
             this.sexoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // edadLabel
-            // 
-            edadLabel.AutoSize = true;
-            edadLabel.Location = new System.Drawing.Point(25, 108);
-            edadLabel.Name = "edadLabel";
-            edadLabel.Size = new System.Drawing.Size(34, 13);
-            edadLabel.TabIndex = 9;
-            edadLabel.Text = "edad:";
             // 
             // edadTextBox
             // 
@@ -162,15 +189,6 @@ namespace CrudBarrioFrom.presentacion
             this.edadTextBox.Size = new System.Drawing.Size(200, 20);
             this.edadTextBox.TabIndex = 10;
             // 
-            // fechaNacimientoLabel
-            // 
-            fechaNacimientoLabel.AutoSize = true;
-            fechaNacimientoLabel.Location = new System.Drawing.Point(25, 135);
-            fechaNacimientoLabel.Name = "fechaNacimientoLabel";
-            fechaNacimientoLabel.Size = new System.Drawing.Size(93, 13);
-            fechaNacimientoLabel.TabIndex = 11;
-            fechaNacimientoLabel.Text = "fecha Nacimiento:";
-            // 
             // fechaNacimientoDateTimePicker
             // 
             this.fechaNacimientoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.hijosBindingSource, "fechaNacimiento", true));
@@ -179,15 +197,6 @@ namespace CrudBarrioFrom.presentacion
             this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.fechaNacimientoDateTimePicker.TabIndex = 12;
             // 
-            // id_padreLabel
-            // 
-            id_padreLabel.AutoSize = true;
-            id_padreLabel.Location = new System.Drawing.Point(25, 160);
-            id_padreLabel.Name = "id_padreLabel";
-            id_padreLabel.Size = new System.Drawing.Size(48, 13);
-            id_padreLabel.TabIndex = 13;
-            id_padreLabel.Text = "id padre:";
-            // 
             // id_padreTextBox
             // 
             this.id_padreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.hijosBindingSource, "id_padre", true));
@@ -195,15 +204,6 @@ namespace CrudBarrioFrom.presentacion
             this.id_padreTextBox.Name = "id_padreTextBox";
             this.id_padreTextBox.Size = new System.Drawing.Size(200, 20);
             this.id_padreTextBox.TabIndex = 14;
-            // 
-            // id_casaLabel
-            // 
-            id_casaLabel.AutoSize = true;
-            id_casaLabel.Location = new System.Drawing.Point(25, 186);
-            id_casaLabel.Name = "id_casaLabel";
-            id_casaLabel.Size = new System.Drawing.Size(44, 13);
-            id_casaLabel.TabIndex = 15;
-            id_casaLabel.Text = "id casa:";
             // 
             // id_casaTextBox
             // 

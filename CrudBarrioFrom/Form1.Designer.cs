@@ -326,7 +326,6 @@ namespace CrudBarrioFrom
             this.tableAdapterManager.casasTableAdapter = this.casasTableAdapter;
             this.tableAdapterManager.exteriorTableAdapter = null;
             this.tableAdapterManager.habitacionTableAdapter = null;
-            //this.tableAdapterManager.hijosTableAdapter = null;
             this.tableAdapterManager.mascotaTableAdapter = null;
             this.tableAdapterManager.mueblesTableAdapter = null;
             this.tableAdapterManager.padresTableAdapter = null;

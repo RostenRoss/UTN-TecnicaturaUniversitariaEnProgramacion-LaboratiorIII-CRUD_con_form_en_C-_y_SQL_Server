@@ -69,5 +69,10 @@ namespace CrudBarrioFrom.presentacion
 
             }
         }
+
+        private void sexoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

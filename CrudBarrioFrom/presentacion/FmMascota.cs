@@ -190,8 +190,8 @@ namespace CrudBarrioFrom.presentacion
                 long id = getId();
                 if (id != 0)
                 {
-                    AddHijo agregarPadreFm = new AddHijo(id, this);
-                    agregarPadreFm.ShowDialog();
+                    AddMascota agregarMascota = new AddMascota(id, this);
+                    agregarMascota.ShowDialog();
                 }
                 refrescar();
             }
@@ -211,6 +211,13 @@ namespace CrudBarrioFrom.presentacion
             {
                 return 0;
             }
+        }
+
+        private void agregarButton_Click(object sender, EventArgs e)
+        {
+            AddMascota agregarMascota = new AddMascota();
+            agregarMascota.ShowDialog();
+            refrescar();
         }
     }
 }

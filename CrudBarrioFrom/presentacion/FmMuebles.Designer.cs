@@ -37,10 +37,6 @@ namespace CrudBarrioFrom.presentacion
             this.interiorBtn = new System.Windows.Forms.Button();
             this.exteriorBtn = new System.Windows.Forms.Button();
             this.petBtn = new System.Windows.Forms.Button();
-            this.mueblesDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mueblesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new CrudBarrioFrom.DataSet1();
             this.servicesBtn = new System.Windows.Forms.Button();
@@ -48,13 +44,18 @@ namespace CrudBarrioFrom.presentacion
             this.casasBtn = new System.Windows.Forms.Button();
             this.mueblesTableAdapter = new CrudBarrioFrom.DataSet1TableAdapters.mueblesTableAdapter();
             this.tableAdapterManager = new CrudBarrioFrom.DataSet1TableAdapters.TableAdapterManager();
+            this.mueblesDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mueblesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mueblesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mueblesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer2
@@ -72,16 +73,16 @@ namespace CrudBarrioFrom.presentacion
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(this.mueblesDataGridView);
             this.splitContainer2.Panel2.Controls.Add(this.padresBtn);
             this.splitContainer2.Panel2.Controls.Add(this.interiorBtn);
             this.splitContainer2.Panel2.Controls.Add(this.exteriorBtn);
             this.splitContainer2.Panel2.Controls.Add(this.petBtn);
-            this.splitContainer2.Panel2.Controls.Add(this.mueblesDataGridView);
             this.splitContainer2.Panel2.Controls.Add(this.servicesBtn);
             this.splitContainer2.Panel2.Controls.Add(this.childrenBtn);
             this.splitContainer2.Panel2.Controls.Add(this.casasBtn);
             this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
-            this.splitContainer2.Size = new System.Drawing.Size(622, 464);
+            this.splitContainer2.Size = new System.Drawing.Size(739, 464);
             this.splitContainer2.SplitterDistance = 63;
             this.splitContainer2.TabIndex = 4;
             // 
@@ -106,7 +107,7 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.padresBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("padresBtn.BackgroundImage")));
             this.padresBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.padresBtn.Location = new System.Drawing.Point(510, 59);
+            this.padresBtn.Location = new System.Drawing.Point(632, 59);
             this.padresBtn.Name = "padresBtn";
             this.padresBtn.Size = new System.Drawing.Size(75, 50);
             this.padresBtn.TabIndex = 11;
@@ -117,7 +118,7 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.interiorBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("interiorBtn.BackgroundImage")));
             this.interiorBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.interiorBtn.Location = new System.Drawing.Point(510, 339);
+            this.interiorBtn.Location = new System.Drawing.Point(632, 339);
             this.interiorBtn.Name = "interiorBtn";
             this.interiorBtn.Size = new System.Drawing.Size(75, 50);
             this.interiorBtn.TabIndex = 10;
@@ -128,7 +129,7 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.exteriorBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("exteriorBtn.BackgroundImage")));
             this.exteriorBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.exteriorBtn.Location = new System.Drawing.Point(510, 283);
+            this.exteriorBtn.Location = new System.Drawing.Point(632, 283);
             this.exteriorBtn.Name = "exteriorBtn";
             this.exteriorBtn.Size = new System.Drawing.Size(75, 50);
             this.exteriorBtn.TabIndex = 9;
@@ -139,46 +140,12 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.petBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("petBtn.BackgroundImage")));
             this.petBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.petBtn.Location = new System.Drawing.Point(510, 227);
+            this.petBtn.Location = new System.Drawing.Point(632, 227);
             this.petBtn.Name = "petBtn";
             this.petBtn.Size = new System.Drawing.Size(75, 50);
             this.petBtn.TabIndex = 8;
             this.petBtn.UseVisualStyleBackColor = true;
             this.petBtn.Click += new System.EventHandler(this.petBtn_Click);
-            // 
-            // mueblesDataGridView
-            // 
-            this.mueblesDataGridView.AutoGenerateColumns = false;
-            this.mueblesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mueblesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.mueblesDataGridView.DataSource = this.mueblesBindingSource;
-            this.mueblesDataGridView.Location = new System.Drawing.Point(0, -1);
-            this.mueblesDataGridView.Name = "mueblesDataGridView";
-            this.mueblesDataGridView.Size = new System.Drawing.Size(483, 394);
-            this.mueblesDataGridView.TabIndex = 3;
-            this.mueblesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mueblesDataGridView_CellClick);
-            this.mueblesDataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.mueblesDataGridView_CellPainting);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "nombre";
-            this.dataGridViewTextBoxColumn2.HeaderText = "nombre";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "id_lugar";
-            this.dataGridViewTextBoxColumn3.HeaderText = "id_lugar";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // mueblesBindingSource
             // 
@@ -194,7 +161,7 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.servicesBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("servicesBtn.BackgroundImage")));
             this.servicesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.servicesBtn.Location = new System.Drawing.Point(510, 171);
+            this.servicesBtn.Location = new System.Drawing.Point(632, 171);
             this.servicesBtn.Name = "servicesBtn";
             this.servicesBtn.Size = new System.Drawing.Size(73, 50);
             this.servicesBtn.TabIndex = 3;
@@ -205,7 +172,7 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.childrenBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("childrenBtn.BackgroundImage")));
             this.childrenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.childrenBtn.Location = new System.Drawing.Point(510, 115);
+            this.childrenBtn.Location = new System.Drawing.Point(632, 115);
             this.childrenBtn.Name = "childrenBtn";
             this.childrenBtn.Size = new System.Drawing.Size(73, 50);
             this.childrenBtn.TabIndex = 2;
@@ -216,7 +183,7 @@ namespace CrudBarrioFrom.presentacion
             // 
             this.casasBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("casasBtn.BackgroundImage")));
             this.casasBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.casasBtn.Location = new System.Drawing.Point(510, 3);
+            this.casasBtn.Location = new System.Drawing.Point(632, 3);
             this.casasBtn.Name = "casasBtn";
             this.casasBtn.Size = new System.Drawing.Size(73, 50);
             this.casasBtn.TabIndex = 1;
@@ -242,11 +209,52 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager.servicioInternetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CrudBarrioFrom.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // mueblesDataGridView
+            // 
+            this.mueblesDataGridView.AutoGenerateColumns = false;
+            this.mueblesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mueblesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.mueblesDataGridView.DataSource = this.mueblesBindingSource;
+            this.mueblesDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.mueblesDataGridView.Name = "mueblesDataGridView";
+            this.mueblesDataGridView.Size = new System.Drawing.Size(593, 391);
+            this.mueblesDataGridView.TabIndex = 11;
+            this.mueblesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mueblesDataGridView_CellClick);
+            this.mueblesDataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.mueblesDataGridView_CellPainting);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "nombre";
+            this.dataGridViewTextBoxColumn2.HeaderText = "nombre";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "id_habitacion";
+            this.dataGridViewTextBoxColumn4.HeaderText = "id_habitacion";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "id_exterior";
+            this.dataGridViewTextBoxColumn5.HeaderText = "id_exterior";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
             // FmMuebles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 464);
+            this.ClientSize = new System.Drawing.Size(739, 464);
             this.Controls.Add(this.splitContainer2);
             this.Name = "FmMuebles";
             this.Text = "FmMuebles";
@@ -256,9 +264,9 @@ namespace CrudBarrioFrom.presentacion
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mueblesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mueblesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mueblesDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -274,13 +282,15 @@ namespace CrudBarrioFrom.presentacion
         private System.Windows.Forms.BindingSource mueblesBindingSource;
         private DataSet1TableAdapters.mueblesTableAdapter mueblesTableAdapter;
         private DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView mueblesDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button padresBtn;
         private System.Windows.Forms.Button interiorBtn;
         private System.Windows.Forms.Button exteriorBtn;
         private System.Windows.Forms.Button petBtn;
+        private System.Windows.Forms.DataGridView mueblesDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

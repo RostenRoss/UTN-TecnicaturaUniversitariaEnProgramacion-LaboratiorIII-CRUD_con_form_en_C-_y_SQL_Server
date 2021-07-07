@@ -73,9 +73,9 @@ namespace CrudBarrioFrom.presentacion
             sexoLabel.AutoSize = true;
             sexoLabel.Location = new System.Drawing.Point(46, 56);
             sexoLabel.Name = "sexoLabel";
-            sexoLabel.Size = new System.Drawing.Size(32, 13);
+            sexoLabel.Size = new System.Drawing.Size(53, 13);
             sexoLabel.TabIndex = 4;
-            sexoLabel.Text = "sexo:";
+            sexoLabel.Text = "femenino:";
             // 
             // edadLabel
             // 
@@ -133,7 +133,6 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager1.casasTableAdapter = null;
             this.tableAdapterManager1.exteriorTableAdapter = null;
             this.tableAdapterManager1.habitacionTableAdapter = null;
-            //this.tableAdapterManager1.hijosTableAdapter = null;
             this.tableAdapterManager1.mascotaTableAdapter = null;
             this.tableAdapterManager1.mueblesTableAdapter = null;
             this.tableAdapterManager1.padresTableAdapter = this.padresTableAdapter1;
@@ -158,7 +157,6 @@ namespace CrudBarrioFrom.presentacion
             this.sexoCheckBox.Name = "sexoCheckBox";
             this.sexoCheckBox.Size = new System.Drawing.Size(200, 24);
             this.sexoCheckBox.TabIndex = 5;
-            this.sexoCheckBox.Text = "checkBox1";
             this.sexoCheckBox.UseVisualStyleBackColor = true;
             // 
             // edadTextBox

@@ -12,6 +12,14 @@ namespace CrudBarrioFrom.presentacion
 {
     public partial class AddMascota : Form
     {
+        private long id;
+        private Form grilla;
+        public AddMascota(long id, Form grilla)
+        {
+            InitializeComponent();
+            this.id = id;
+            this.grilla = grilla;
+        }
         public AddMascota()
         {
             InitializeComponent();
@@ -34,7 +42,18 @@ namespace CrudBarrioFrom.presentacion
 
         private void aceptarBtn_Click(object sender, EventArgs e)
         {
+            if (id == 0)
+            {
+                this.mascotaTableAdapter.InsertMascota(familiaTextBox.Text, dietaTextBox.Text, nombreTextBox.Text, tipoTextBox.Text,
+                    int.Parse(edadTextBox.Text), long.Parse(id_casaTextBox.Text));
+            }
+            else
+            {
+                this.mascotaTableAdapter.UpdateMascotaById(familiaTextBox.Text, dietaTextBox.Text, nombreTextBox.Text, tipoTextBox.Text,
+                    int.Parse(edadTextBox.Text), long.Parse(id_casaTextBox.Text), this.id);
+            }
 
+            this.Close();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

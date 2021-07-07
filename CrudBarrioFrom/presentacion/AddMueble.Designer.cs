@@ -31,18 +31,21 @@ namespace CrudBarrioFrom.presentacion
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label nombreLabel;
-            System.Windows.Forms.Label id_lugarLabel;
+            System.Windows.Forms.Label id_habitacionLabel;
+            System.Windows.Forms.Label id_exteriorLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddMueble));
             this.dataSet1 = new CrudBarrioFrom.DataSet1();
             this.mueblesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mueblesTableAdapter = new CrudBarrioFrom.DataSet1TableAdapters.mueblesTableAdapter();
             this.tableAdapterManager = new CrudBarrioFrom.DataSet1TableAdapters.TableAdapterManager();
-            this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.id_lugarTextBox = new System.Windows.Forms.TextBox();
             this.aceptarBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.id_habitacionTextBox = new System.Windows.Forms.TextBox();
+            this.id_exteriorTextBox = new System.Windows.Forms.TextBox();
             nombreLabel = new System.Windows.Forms.Label();
-            id_lugarLabel = new System.Windows.Forms.Label();
+            id_habitacionLabel = new System.Windows.Forms.Label();
+            id_exteriorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mueblesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -50,20 +53,29 @@ namespace CrudBarrioFrom.presentacion
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(32, 48);
+            nombreLabel.Location = new System.Drawing.Point(52, 41);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(45, 13);
-            nombreLabel.TabIndex = 3;
+            nombreLabel.TabIndex = 11;
             nombreLabel.Text = "nombre:";
             // 
-            // id_lugarLabel
+            // id_habitacionLabel
             // 
-            id_lugarLabel.AutoSize = true;
-            id_lugarLabel.Location = new System.Drawing.Point(32, 81);
-            id_lugarLabel.Name = "id_lugarLabel";
-            id_lugarLabel.Size = new System.Drawing.Size(44, 13);
-            id_lugarLabel.TabIndex = 5;
-            id_lugarLabel.Text = "id lugar:";
+            id_habitacionLabel.AutoSize = true;
+            id_habitacionLabel.Location = new System.Drawing.Point(52, 67);
+            id_habitacionLabel.Name = "id_habitacionLabel";
+            id_habitacionLabel.Size = new System.Drawing.Size(70, 13);
+            id_habitacionLabel.TabIndex = 13;
+            id_habitacionLabel.Text = "id habitacion:";
+            // 
+            // id_exteriorLabel
+            // 
+            id_exteriorLabel.AutoSize = true;
+            id_exteriorLabel.Location = new System.Drawing.Point(52, 93);
+            id_exteriorLabel.Name = "id_exteriorLabel";
+            id_exteriorLabel.Size = new System.Drawing.Size(55, 13);
+            id_exteriorLabel.TabIndex = 15;
+            id_exteriorLabel.Text = "id exterior:";
             // 
             // dataSet1
             // 
@@ -85,7 +97,6 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager.casasTableAdapter = null;
             this.tableAdapterManager.exteriorTableAdapter = null;
             this.tableAdapterManager.habitacionTableAdapter = null;
-            //this.tableAdapterManager.hijosTableAdapter = null;
             this.tableAdapterManager.mascotaTableAdapter = null;
             this.tableAdapterManager.mueblesTableAdapter = this.mueblesTableAdapter;
             this.tableAdapterManager.padresTableAdapter = null;
@@ -94,22 +105,6 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager.servicioElectricidadTableAdapter = null;
             this.tableAdapterManager.servicioInternetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CrudBarrioFrom.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // nombreTextBox
-            // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mueblesBindingSource, "nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(143, 48);
-            this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(100, 20);
-            this.nombreTextBox.TabIndex = 4;
-            // 
-            // id_lugarTextBox
-            // 
-            this.id_lugarTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mueblesBindingSource, "id_lugar", true));
-            this.id_lugarTextBox.Location = new System.Drawing.Point(143, 74);
-            this.id_lugarTextBox.Name = "id_lugarTextBox";
-            this.id_lugarTextBox.Size = new System.Drawing.Size(100, 20);
-            this.id_lugarTextBox.TabIndex = 6;
             // 
             // aceptarBtn
             // 
@@ -133,18 +128,45 @@ namespace CrudBarrioFrom.presentacion
             this.cancelBtn.Size = new System.Drawing.Size(75, 56);
             this.cancelBtn.TabIndex = 9;
             this.cancelBtn.UseVisualStyleBackColor = false;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // nombreTextBox
+            // 
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mueblesBindingSource, "nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(128, 38);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nombreTextBox.TabIndex = 12;
+            // 
+            // id_habitacionTextBox
+            // 
+            this.id_habitacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mueblesBindingSource, "id_habitacion", true));
+            this.id_habitacionTextBox.Location = new System.Drawing.Point(128, 64);
+            this.id_habitacionTextBox.Name = "id_habitacionTextBox";
+            this.id_habitacionTextBox.Size = new System.Drawing.Size(100, 20);
+            this.id_habitacionTextBox.TabIndex = 14;
+            // 
+            // id_exteriorTextBox
+            // 
+            this.id_exteriorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mueblesBindingSource, "id_exterior", true));
+            this.id_exteriorTextBox.Location = new System.Drawing.Point(128, 90);
+            this.id_exteriorTextBox.Name = "id_exteriorTextBox";
+            this.id_exteriorTextBox.Size = new System.Drawing.Size(100, 20);
+            this.id_exteriorTextBox.TabIndex = 16;
             // 
             // AddMueble
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 206);
-            this.Controls.Add(this.cancelBtn);
-            this.Controls.Add(this.aceptarBtn);
+            this.ClientSize = new System.Drawing.Size(299, 214);
             this.Controls.Add(nombreLabel);
             this.Controls.Add(this.nombreTextBox);
-            this.Controls.Add(id_lugarLabel);
-            this.Controls.Add(this.id_lugarTextBox);
+            this.Controls.Add(id_habitacionLabel);
+            this.Controls.Add(this.id_habitacionTextBox);
+            this.Controls.Add(id_exteriorLabel);
+            this.Controls.Add(this.id_exteriorTextBox);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.aceptarBtn);
             this.Name = "AddMueble";
             this.Text = "Agregar mueble";
             this.Load += new System.EventHandler(this.AddMueble_Load);
@@ -161,9 +183,10 @@ namespace CrudBarrioFrom.presentacion
         private System.Windows.Forms.BindingSource mueblesBindingSource;
         private DataSet1TableAdapters.mueblesTableAdapter mueblesTableAdapter;
         private DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.TextBox nombreTextBox;
-        private System.Windows.Forms.TextBox id_lugarTextBox;
         private System.Windows.Forms.Button aceptarBtn;
         private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.TextBox nombreTextBox;
+        private System.Windows.Forms.TextBox id_habitacionTextBox;
+        private System.Windows.Forms.TextBox id_exteriorTextBox;
     }
 }

@@ -54,10 +54,6 @@ namespace CrudBarrioFrom {
         
         private global::System.Data.DataRelation relationFK_mascota_casas;
         
-        private global::System.Data.DataRelation relationFK_muebles_Exterior;
-        
-        private global::System.Data.DataRelation relationFK_muebles_habitacion;
-        
         private global::System.Data.DataRelation relationFK_servicioAgua_casas;
         
         private global::System.Data.DataRelation relationFK_servicioCable_casas;
@@ -68,7 +64,9 @@ namespace CrudBarrioFrom {
         
         private global::System.Data.DataRelation relationFK_hijos_casas;
         
-        private global::System.Data.DataRelation relationFK_hijos_padres;
+        private global::System.Data.DataRelation relationhabitacion_muebles;
+        
+        private global::System.Data.DataRelation relationexterior_muebles;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -462,14 +460,13 @@ namespace CrudBarrioFrom {
             this.relationFK_habitacion_casas = this.Relations["FK_habitacion_casas"];
             this.relationFK_Exterior_casas = this.Relations["FK_Exterior_casas"];
             this.relationFK_mascota_casas = this.Relations["FK_mascota_casas"];
-            this.relationFK_muebles_Exterior = this.Relations["FK_muebles_Exterior"];
-            this.relationFK_muebles_habitacion = this.Relations["FK_muebles_habitacion"];
             this.relationFK_servicioAgua_casas = this.Relations["FK_servicioAgua_casas"];
             this.relationFK_servicioCable_casas = this.Relations["FK_servicioCable_casas"];
             this.relationFK_servicioElectricidad_casas = this.Relations["FK_servicioElectricidad_casas"];
             this.relationFK_servicioInternet_casas = this.Relations["FK_servicioInternet_casas"];
             this.relationFK_hijos_casas = this.Relations["FK_hijos_casas"];
-            this.relationFK_hijos_padres = this.Relations["FK_hijos_padres"];
+            this.relationhabitacion_muebles = this.Relations["habitacion_muebles"];
+            this.relationexterior_muebles = this.Relations["exterior_muebles"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -518,14 +515,6 @@ namespace CrudBarrioFrom {
                         this.tablecasas.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablemascota.id_casaColumn}, false);
             this.Relations.Add(this.relationFK_mascota_casas);
-            this.relationFK_muebles_Exterior = new global::System.Data.DataRelation("FK_muebles_Exterior", new global::System.Data.DataColumn[] {
-                        this.tableexterior.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tablemuebles.idColumn}, false);
-            this.Relations.Add(this.relationFK_muebles_Exterior);
-            this.relationFK_muebles_habitacion = new global::System.Data.DataRelation("FK_muebles_habitacion", new global::System.Data.DataColumn[] {
-                        this.tablehabitacion.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tablemuebles.idColumn}, false);
-            this.Relations.Add(this.relationFK_muebles_habitacion);
             this.relationFK_servicioAgua_casas = new global::System.Data.DataRelation("FK_servicioAgua_casas", new global::System.Data.DataColumn[] {
                         this.tablecasas.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableservicioAgua.id_casaColumn}, false);
@@ -546,10 +535,14 @@ namespace CrudBarrioFrom {
                         this.tablecasas.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablehijos.id_casaColumn}, false);
             this.Relations.Add(this.relationFK_hijos_casas);
-            this.relationFK_hijos_padres = new global::System.Data.DataRelation("FK_hijos_padres", new global::System.Data.DataColumn[] {
-                        this.tablepadres.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tablehijos.id_padreColumn}, false);
-            this.Relations.Add(this.relationFK_hijos_padres);
+            this.relationhabitacion_muebles = new global::System.Data.DataRelation("habitacion_muebles", new global::System.Data.DataColumn[] {
+                        this.tablehabitacion.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tablemuebles.id_habitacionColumn}, false);
+            this.Relations.Add(this.relationhabitacion_muebles);
+            this.relationexterior_muebles = new global::System.Data.DataRelation("exterior_muebles", new global::System.Data.DataColumn[] {
+                        this.tableexterior.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tablemuebles.id_exteriorColumn}, false);
+            this.Relations.Add(this.relationexterior_muebles);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1538,7 +1531,7 @@ namespace CrudBarrioFrom {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public hijosRow AddhijosRow(string nombre, int gradoEscuela, bool sexo, int edad, System.DateTime fechaNacimiento, padresRow parentpadresRowByFK_hijos_padres, casasRow parentcasasRowByFK_hijos_casas) {
+            public hijosRow AddhijosRow(string nombre, int gradoEscuela, bool sexo, int edad, System.DateTime fechaNacimiento, long id_padre, casasRow parentcasasRowByFK_hijos_casas) {
                 hijosRow rowhijosRow = ((hijosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1547,11 +1540,8 @@ namespace CrudBarrioFrom {
                         sexo,
                         edad,
                         fechaNacimiento,
-                        null,
+                        id_padre,
                         null};
-                if ((parentpadresRowByFK_hijos_padres != null)) {
-                    columnValuesArray[6] = parentpadresRowByFK_hijos_padres[0];
-                }
                 if ((parentcasasRowByFK_hijos_casas != null)) {
                     columnValuesArray[7] = parentcasasRowByFK_hijos_casas[0];
                 }
@@ -2733,7 +2723,9 @@ namespace CrudBarrioFrom {
             
             private global::System.Data.DataColumn columnnombre;
             
-            private global::System.Data.DataColumn columnid_lugar;
+            private global::System.Data.DataColumn columnid_habitacion;
+            
+            private global::System.Data.DataColumn columnid_exterior;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2786,9 +2778,17 @@ namespace CrudBarrioFrom {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn id_lugarColumn {
+            public global::System.Data.DataColumn id_habitacionColumn {
                 get {
-                    return this.columnid_lugar;
+                    return this.columnid_habitacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_exteriorColumn {
+                get {
+                    return this.columnid_exterior;
                 }
             }
             
@@ -2829,14 +2829,18 @@ namespace CrudBarrioFrom {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public mueblesRow AddmueblesRow(exteriorRow parentexteriorRowByFK_muebles_Exterior, string nombre, long id_lugar) {
+            public mueblesRow AddmueblesRow(long id, string nombre, habitacionRow parenthabitacionRowByhabitacion_muebles, exteriorRow parentexteriorRowByexterior_muebles) {
                 mueblesRow rowmueblesRow = ((mueblesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        id,
                         nombre,
-                        id_lugar};
-                if ((parentexteriorRowByFK_muebles_Exterior != null)) {
-                    columnValuesArray[0] = parentexteriorRowByFK_muebles_Exterior[0];
+                        null,
+                        null};
+                if ((parenthabitacionRowByhabitacion_muebles != null)) {
+                    columnValuesArray[2] = parenthabitacionRowByhabitacion_muebles[0];
+                }
+                if ((parentexteriorRowByexterior_muebles != null)) {
+                    columnValuesArray[3] = parentexteriorRowByexterior_muebles[0];
                 }
                 rowmueblesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmueblesRow);
@@ -2869,7 +2873,8 @@ namespace CrudBarrioFrom {
             internal void InitVars() {
                 this.columnid = base.Columns["id"];
                 this.columnnombre = base.Columns["nombre"];
-                this.columnid_lugar = base.Columns["id_lugar"];
+                this.columnid_habitacion = base.Columns["id_habitacion"];
+                this.columnid_exterior = base.Columns["id_exterior"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2879,15 +2884,17 @@ namespace CrudBarrioFrom {
                 base.Columns.Add(this.columnid);
                 this.columnnombre = new global::System.Data.DataColumn("nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombre);
-                this.columnid_lugar = new global::System.Data.DataColumn("id_lugar", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_lugar);
+                this.columnid_habitacion = new global::System.Data.DataColumn("id_habitacion", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_habitacion);
+                this.columnid_exterior = new global::System.Data.DataColumn("id_exterior", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_exterior);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnnombre.AllowDBNull = false;
                 this.columnnombre.MaxLength = 20;
-                this.columnid_lugar.AllowDBNull = false;
+                this.columnid_habitacion.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4708,17 +4715,6 @@ namespace CrudBarrioFrom {
             public void Setid_casaNull() {
                 this[this.tablepadres.id_casaColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public hijosRow[] GethijosRows() {
-                if ((this.Table.ChildRelations["FK_hijos_padres"] == null)) {
-                    return new hijosRow[0];
-                }
-                else {
-                    return ((hijosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_hijos_padres"])));
-                }
-            }
         }
         
         /// <summary>
@@ -4841,17 +4837,6 @@ namespace CrudBarrioFrom {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public padresRow padresRow {
-                get {
-                    return ((padresRow)(this.GetParentRow(this.Table.ParentRelations["FK_hijos_padres"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_hijos_padres"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IssexoNull() {
                 return this.IsNull(this.tablehijos.sexoColumn);
             }
@@ -4935,11 +4920,11 @@ namespace CrudBarrioFrom {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public mueblesRow[] GetmueblesRows() {
-                if ((this.Table.ChildRelations["FK_muebles_habitacion"] == null)) {
+                if ((this.Table.ChildRelations["habitacion_muebles"] == null)) {
                     return new mueblesRow[0];
                 }
                 else {
-                    return ((mueblesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_muebles_habitacion"])));
+                    return ((mueblesRow[])(base.GetChildRows(this.Table.ChildRelations["habitacion_muebles"])));
                 }
             }
         }
@@ -5016,11 +5001,11 @@ namespace CrudBarrioFrom {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public mueblesRow[] GetmueblesRows() {
-                if ((this.Table.ChildRelations["FK_muebles_Exterior"] == null)) {
+                if ((this.Table.ChildRelations["exterior_muebles"] == null)) {
                     return new mueblesRow[0];
                 }
                 else {
-                    return ((mueblesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_muebles_Exterior"])));
+                    return ((mueblesRow[])(base.GetChildRows(this.Table.ChildRelations["exterior_muebles"])));
                 }
             }
         }
@@ -5183,23 +5168,28 @@ namespace CrudBarrioFrom {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long id_lugar {
+            public long id_habitacion {
                 get {
-                    return ((long)(this[this.tablemuebles.id_lugarColumn]));
+                    return ((long)(this[this.tablemuebles.id_habitacionColumn]));
                 }
                 set {
-                    this[this.tablemuebles.id_lugarColumn] = value;
+                    this[this.tablemuebles.id_habitacionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public exteriorRow ExteriorRow {
+            public long id_exterior {
                 get {
-                    return ((exteriorRow)(this.GetParentRow(this.Table.ParentRelations["FK_muebles_Exterior"])));
+                    try {
+                        return ((long)(this[this.tablemuebles.id_exteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'id_exterior\' de la tabla \'muebles\' es DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_muebles_Exterior"]);
+                    this[this.tablemuebles.id_exteriorColumn] = value;
                 }
             }
             
@@ -5207,11 +5197,34 @@ namespace CrudBarrioFrom {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public habitacionRow habitacionRow {
                 get {
-                    return ((habitacionRow)(this.GetParentRow(this.Table.ParentRelations["FK_muebles_habitacion"])));
+                    return ((habitacionRow)(this.GetParentRow(this.Table.ParentRelations["habitacion_muebles"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_muebles_habitacion"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["habitacion_muebles"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public exteriorRow exteriorRow {
+                get {
+                    return ((exteriorRow)(this.GetParentRow(this.Table.ParentRelations["exterior_muebles"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["exterior_muebles"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isid_exteriorNull() {
+                return this.IsNull(this.tablemuebles.id_exteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setid_exteriorNull() {
+                this[this.tablemuebles.id_exteriorColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7841,10 +7854,9 @@ SELECT id, tipo, metrosCuadrados, id_casa FROM habitacion WHERE (id = @id)";
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO [habitacion] ([id], [tipo], [metrosCuadrados], [id_casa]) VALUES (@id" +
-                ", @tipo, @metrosCuadrados, @id_casa);";
+            this._commandCollection[3].CommandText = "INSERT INTO [habitacion] ( [tipo], [metrosCuadrados], [id_casa]) VALUES ( @tipo, " +
+                "@metrosCuadrados, @id_casa);";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipo", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@metrosCuadrados", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "metrosCuadrados", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_casa", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_casa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8073,17 +8085,16 @@ SELECT id, tipo, metrosCuadrados, id_casa FROM habitacion WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertInterior(long id, string tipo, double metrosCuadrados, long id_casa) {
+        public virtual int InsertInterior(string tipo, double metrosCuadrados, long id_casa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            command.Parameters[0].Value = ((long)(id));
             if ((tipo == null)) {
                 throw new global::System.ArgumentNullException("tipo");
             }
             else {
-                command.Parameters[1].Value = ((string)(tipo));
+                command.Parameters[0].Value = ((string)(tipo));
             }
-            command.Parameters[2].Value = ((double)(metrosCuadrados));
-            command.Parameters[3].Value = ((long)(id_casa));
+            command.Parameters[1].Value = ((double)(metrosCuadrados));
+            command.Parameters[2].Value = ((long)(id_casa));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8322,10 +8333,9 @@ SELECT id, tipo, metrosCuadrados, id_casa FROM Exterior WHERE (id = @id)";
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO [Exterior] ([id], [tipo], [metrosCuadrados], [id_casa]) VALUES (@id, " +
-                "@tipo, @metrosCuadrados, @id_casa);";
+            this._commandCollection[3].CommandText = "INSERT INTO [Exterior] ([tipo], [metrosCuadrados], [id_casa]) VALUES (@tipo, @met" +
+                "rosCuadrados, @id_casa);";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipo", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@metrosCuadrados", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "metrosCuadrados", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_casa", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_casa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8554,17 +8564,16 @@ SELECT id, tipo, metrosCuadrados, id_casa FROM Exterior WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertExterior(long id, string tipo, double metrosCuadrados, long id_casa) {
+        public virtual int InsertExterior(string tipo, double metrosCuadrados, long id_casa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            command.Parameters[0].Value = ((long)(id));
             if ((tipo == null)) {
                 throw new global::System.ArgumentNullException("tipo");
             }
             else {
-                command.Parameters[1].Value = ((string)(tipo));
+                command.Parameters[0].Value = ((string)(tipo));
             }
-            command.Parameters[2].Value = ((double)(metrosCuadrados));
-            command.Parameters[3].Value = ((long)(id_casa));
+            command.Parameters[1].Value = ((double)(metrosCuadrados));
+            command.Parameters[2].Value = ((long)(id_casa));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8818,10 +8827,9 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO [mascota] ([id], [familia], [dieta], [nombre], [tipo], [edad], [id_ca" +
-                "sa]) VALUES (@id, @familia, @dieta, @nombre, @tipo, @edad, @id_casa);";
+            this._commandCollection[3].CommandText = "INSERT INTO [mascota] ( [familia], [dieta], [nombre], [tipo], [edad], [id_casa]) " +
+                "VALUES (@familia, @dieta, @nombre, @tipo, @edad, @id_casa);";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@familia", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "familia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dieta", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "dieta", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9153,39 +9161,38 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertMascota(long id, string familia, string dieta, string nombre, string tipo, int edad, global::System.Nullable<long> id_casa) {
+        public virtual int InsertMascota(string familia, string dieta, string nombre, string tipo, int edad, global::System.Nullable<long> id_casa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            command.Parameters[0].Value = ((long)(id));
             if ((familia == null)) {
                 throw new global::System.ArgumentNullException("familia");
             }
             else {
-                command.Parameters[1].Value = ((string)(familia));
+                command.Parameters[0].Value = ((string)(familia));
             }
             if ((dieta == null)) {
                 throw new global::System.ArgumentNullException("dieta");
             }
             else {
-                command.Parameters[2].Value = ((string)(dieta));
+                command.Parameters[1].Value = ((string)(dieta));
             }
             if ((nombre == null)) {
                 throw new global::System.ArgumentNullException("nombre");
             }
             else {
-                command.Parameters[3].Value = ((string)(nombre));
+                command.Parameters[2].Value = ((string)(nombre));
             }
             if ((tipo == null)) {
                 throw new global::System.ArgumentNullException("tipo");
             }
             else {
-                command.Parameters[4].Value = ((string)(tipo));
+                command.Parameters[3].Value = ((string)(tipo));
             }
-            command.Parameters[5].Value = ((int)(edad));
+            command.Parameters[4].Value = ((int)(edad));
             if ((id_casa.HasValue == true)) {
-                command.Parameters[6].Value = ((long)(id_casa.Value));
+                command.Parameters[5].Value = ((long)(id_casa.Value));
             }
             else {
-                command.Parameters[6].Value = global::System.DBNull.Value;
+                command.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9383,7 +9390,8 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
             tableMapping.DataSetTable = "muebles";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("nombre", "nombre");
-            tableMapping.ColumnMappings.Add("id_lugar", "id_lugar");
+            tableMapping.ColumnMappings.Add("id_habitacion", "id_habitacion");
+            tableMapping.ColumnMappings.Add("id_exterior", "id_exterior");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -9425,7 +9433,7 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        muebles.*\r\nFROM            muebles";
@@ -9442,18 +9450,34 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO [muebles] ([nombre], [id_lugar]) VALUES (@nombre, @id_lugar);\r\n";
+            this._commandCollection[3].CommandText = "INSERT INTO [muebles] ([nombre], [id_exterior],[id_habitacion] ) VALUES (@nombre," +
+                " @id_exterior, NULL);\r\n";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_lugar", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_lugar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_exterior", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_exterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE       muebles\r\nSET                nombre = @nombre, id_lugar = @id_lugar\r\n" +
-                "WHERE        (id = @id)";
+            this._commandCollection[4].CommandText = "INSERT INTO [muebles] ([nombre], [id_habitacion], [id_exterior]) VALUES (@nombre," +
+                " @id_habitacion, NULL);\r\n";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_lugar", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_lugar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_habitacion", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_habitacion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "UPDATE       muebles\r\nSET                nombre = @nombre, id_exterior = @id_exte" +
+                "rior , id_habitacion = NULL \r\nWHERE        (id = @id)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_exterior", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_exterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "UPDATE       muebles\r\nSET                nombre = @nombre, id_habitacion = @id_ha" +
+                "bitacion, id_exterior = NULL \r\nWHERE        (id = @id)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_habitacion", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id_habitacion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9666,7 +9690,7 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertMueble(string nombre, long id_lugar) {
+        public virtual int InsertMuebleEnExterior(string nombre, long id_exterior) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((nombre == null)) {
                 throw new global::System.ArgumentNullException("nombre");
@@ -9674,7 +9698,37 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
             else {
                 command.Parameters[0].Value = ((string)(nombre));
             }
-            command.Parameters[1].Value = ((long)(id_lugar));
+            command.Parameters[1].Value = ((long)(id_exterior));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertMuebleEnHabitacion(string nombre, long id_habitacion) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            if ((nombre == null)) {
+                throw new global::System.ArgumentNullException("nombre");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(nombre));
+            }
+            command.Parameters[1].Value = ((long)(id_habitacion));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9696,15 +9750,46 @@ SELECT id, familia, dieta, nombre, tipo, edad, id_casa FROM mascota WHERE (id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateMueble(string nombre, long id_lugar, long id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+        public virtual int UpdateMuebleExterior(string nombre, long id_exterior, long id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((nombre == null)) {
                 throw new global::System.ArgumentNullException("nombre");
             }
             else {
                 command.Parameters[0].Value = ((string)(nombre));
             }
-            command.Parameters[1].Value = ((long)(id_lugar));
+            command.Parameters[1].Value = ((long)(id_exterior));
+            command.Parameters[2].Value = ((long)(id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateMuebleHabitacion(string nombre, long id_habitacion, long id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+            if ((nombre == null)) {
+                throw new global::System.ArgumentNullException("nombre");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(nombre));
+            }
+            command.Parameters[1].Value = ((long)(id_habitacion));
             command.Parameters[2].Value = ((long)(id));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9918,10 +10003,9 @@ SELECT id, tipo, empresa, precio, fechaInstalado, id_casa FROM servicioAgua WHER
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO [servicioAgua] ([id], [tipo], [empresa], [precio], [fechaInstalado], " +
-                "[id_casa]) VALUES (@id, @tipo, @empresa, @precio, @fechaInstalado, @id_casa);";
+            this._commandCollection[2].CommandText = "INSERT INTO [servicioAgua] ( [tipo], [empresa], [precio], [fechaInstalado], [id_c" +
+                "asa]) VALUES (@tipo, @empresa, @precio, @fechaInstalado, @id_casa);";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipo", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@empresa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "empresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@precio", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10169,28 +10253,27 @@ SELECT id, tipo, empresa, precio, fechaInstalado, id_casa FROM servicioAgua WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertServicioAgua(long id, string tipo, string empresa, double precio, System.DateTime fechaInstalado, global::System.Nullable<long> id_casa) {
+        public virtual int InsertServicioAgua(string tipo, string empresa, double precio, System.DateTime fechaInstalado, global::System.Nullable<long> id_casa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((long)(id));
             if ((tipo == null)) {
                 throw new global::System.ArgumentNullException("tipo");
             }
             else {
-                command.Parameters[1].Value = ((string)(tipo));
+                command.Parameters[0].Value = ((string)(tipo));
             }
             if ((empresa == null)) {
                 throw new global::System.ArgumentNullException("empresa");
             }
             else {
-                command.Parameters[2].Value = ((string)(empresa));
+                command.Parameters[1].Value = ((string)(empresa));
             }
-            command.Parameters[3].Value = ((double)(precio));
-            command.Parameters[4].Value = ((System.DateTime)(fechaInstalado));
+            command.Parameters[2].Value = ((double)(precio));
+            command.Parameters[3].Value = ((System.DateTime)(fechaInstalado));
             if ((id_casa.HasValue == true)) {
-                command.Parameters[5].Value = ((long)(id_casa.Value));
+                command.Parameters[4].Value = ((long)(id_casa.Value));
             }
             else {
-                command.Parameters[5].Value = global::System.DBNull.Value;
+                command.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10411,11 +10494,10 @@ SELECT id, tipo, esHd, precio, empresa, limiteDeDatos, fechaInstalado, id_casa F
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO [servicioCable] ([id], [tipo], [esHd], [precio], [empresa], [limiteDe" +
-                "Datos], [fechaInstalado], [id_casa]) VALUES (@id, @tipo, @esHd, @precio, @empres" +
-                "a, @limiteDeDatos, @fechaInstalado, @id_casa);";
+            this._commandCollection[2].CommandText = "INSERT INTO [servicioCable] ( [tipo], [esHd], [precio], [empresa], [limiteDeDatos" +
+                "], [fechaInstalado], [id_casa]) VALUES ( @tipo, @esHd, @precio, @empresa, @limit" +
+                "eDeDatos, @fechaInstalado, @id_casa);";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipo", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@esHd", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "esHd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@precio", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10688,30 +10770,29 @@ SELECT id, tipo, esHd, precio, empresa, limiteDeDatos, fechaInstalado, id_casa F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertServicioCable(long id, string tipo, bool esHd, double precio, string empresa, double limiteDeDatos, System.DateTime fechaInstalado, global::System.Nullable<long> id_casa) {
+        public virtual int InsertServicioCable(string tipo, bool esHd, double precio, string empresa, double limiteDeDatos, System.DateTime fechaInstalado, global::System.Nullable<long> id_casa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((long)(id));
             if ((tipo == null)) {
                 throw new global::System.ArgumentNullException("tipo");
             }
             else {
-                command.Parameters[1].Value = ((string)(tipo));
+                command.Parameters[0].Value = ((string)(tipo));
             }
-            command.Parameters[2].Value = ((bool)(esHd));
-            command.Parameters[3].Value = ((double)(precio));
+            command.Parameters[1].Value = ((bool)(esHd));
+            command.Parameters[2].Value = ((double)(precio));
             if ((empresa == null)) {
                 throw new global::System.ArgumentNullException("empresa");
             }
             else {
-                command.Parameters[4].Value = ((string)(empresa));
+                command.Parameters[3].Value = ((string)(empresa));
             }
-            command.Parameters[5].Value = ((double)(limiteDeDatos));
-            command.Parameters[6].Value = ((System.DateTime)(fechaInstalado));
+            command.Parameters[4].Value = ((double)(limiteDeDatos));
+            command.Parameters[5].Value = ((System.DateTime)(fechaInstalado));
             if ((id_casa.HasValue == true)) {
-                command.Parameters[7].Value = ((long)(id_casa.Value));
+                command.Parameters[6].Value = ((long)(id_casa.Value));
             }
             else {
-                command.Parameters[7].Value = global::System.DBNull.Value;
+                command.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10923,11 +11004,10 @@ SELECT id, esTrifasica, precio, empresa, fechaInstalado, id_casa FROM servicioEl
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO [servicioElectricidad] ([id], [esTrifasica], [precio], [empresa], [fe" +
-                "chaInstalado], [id_casa]) VALUES (@id, @esTrifasica, @precio, @empresa, @fechaIn" +
-                "stalado, @id_casa);";
+            this._commandCollection[2].CommandText = "INSERT INTO [servicioElectricidad] ([esTrifasica], [precio], [empresa], [fechaIns" +
+                "talado], [id_casa]) VALUES (@esTrifasica, @precio, @empresa, @fechaInstalado, @i" +
+                "d_casa);";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@esTrifasica", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "esTrifasica", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@precio", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@empresa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "empresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11155,23 +11235,22 @@ SELECT id, esTrifasica, precio, empresa, fechaInstalado, id_casa FROM servicioEl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertServicioElectricidad(long id, bool esTrifasica, double precio, string empresa, System.DateTime fechaInstalado, global::System.Nullable<long> id_casa) {
+        public virtual int InsertServicioElectricidad(bool esTrifasica, double precio, string empresa, System.DateTime fechaInstalado, global::System.Nullable<long> id_casa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((long)(id));
-            command.Parameters[1].Value = ((bool)(esTrifasica));
-            command.Parameters[2].Value = ((double)(precio));
+            command.Parameters[0].Value = ((bool)(esTrifasica));
+            command.Parameters[1].Value = ((double)(precio));
             if ((empresa == null)) {
                 throw new global::System.ArgumentNullException("empresa");
             }
             else {
-                command.Parameters[3].Value = ((string)(empresa));
+                command.Parameters[2].Value = ((string)(empresa));
             }
-            command.Parameters[4].Value = ((System.DateTime)(fechaInstalado));
+            command.Parameters[3].Value = ((System.DateTime)(fechaInstalado));
             if ((id_casa.HasValue == true)) {
-                command.Parameters[5].Value = ((long)(id_casa.Value));
+                command.Parameters[4].Value = ((long)(id_casa.Value));
             }
             else {
-                command.Parameters[5].Value = global::System.DBNull.Value;
+                command.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11395,11 +11474,10 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO [servicioInternet] ([id], [tipo], [velocidad], [precio], [empresa], [" +
-                "limiteDeDatos], [fechaInstalado], [id_casa]) VALUES (@id, @tipo, @velocidad, @pr" +
-                "ecio, @empresa, @limiteDeDatos, @fechaInstalado, @id_casa);\r\n";
+            this._commandCollection[2].CommandText = "INSERT INTO [servicioInternet] ( [tipo], [velocidad], [precio], [empresa], [limit" +
+                "eDeDatos], [fechaInstalado], [id_casa]) VALUES ( @tipo, @velocidad, @precio, @em" +
+                "presa, @limiteDeDatos, @fechaInstalado, @id_casa);\r\n";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipo", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@velocidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "velocidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@precio", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11717,40 +11795,39 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertServicioInternet(long id, string tipo, int velocidad, double precio, string empresa, string limiteDeDatos, global::System.Nullable<global::System.DateTime> fechaInstalado, global::System.Nullable<long> id_casa) {
+        public virtual int InsertServicioInternet(string tipo, int velocidad, double precio, string empresa, string limiteDeDatos, global::System.Nullable<global::System.DateTime> fechaInstalado, global::System.Nullable<long> id_casa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((long)(id));
             if ((tipo == null)) {
                 throw new global::System.ArgumentNullException("tipo");
             }
             else {
-                command.Parameters[1].Value = ((string)(tipo));
+                command.Parameters[0].Value = ((string)(tipo));
             }
-            command.Parameters[2].Value = ((int)(velocidad));
-            command.Parameters[3].Value = ((double)(precio));
+            command.Parameters[1].Value = ((int)(velocidad));
+            command.Parameters[2].Value = ((double)(precio));
             if ((empresa == null)) {
                 throw new global::System.ArgumentNullException("empresa");
             }
             else {
-                command.Parameters[4].Value = ((string)(empresa));
+                command.Parameters[3].Value = ((string)(empresa));
             }
             if ((limiteDeDatos == null)) {
                 throw new global::System.ArgumentNullException("limiteDeDatos");
             }
             else {
-                command.Parameters[5].Value = ((string)(limiteDeDatos));
+                command.Parameters[4].Value = ((string)(limiteDeDatos));
             }
             if ((fechaInstalado.HasValue == true)) {
-                command.Parameters[6].Value = ((System.DateTime)(fechaInstalado.Value));
+                command.Parameters[5].Value = ((System.DateTime)(fechaInstalado.Value));
+            }
+            else {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((id_casa.HasValue == true)) {
+                command.Parameters[6].Value = ((long)(id_casa.Value));
             }
             else {
                 command.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((id_casa.HasValue == true)) {
-                command.Parameters[7].Value = ((long)(id_casa.Value));
-            }
-            else {
-                command.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -12079,15 +12156,6 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._padresTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.padres.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._padresTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._habitacionTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.habitacion.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -12103,6 +12171,15 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._exteriorTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._padresTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.padres.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._padresTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12178,14 +12255,6 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._padresTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.padres.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._padresTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._habitacionTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.habitacion.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12199,6 +12268,14 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._exteriorTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._padresTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.padres.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._padresTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -12308,6 +12385,14 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._padresTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.padres.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._padresTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._exteriorTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.exterior.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -12321,14 +12406,6 @@ SELECT id, tipo, velocidad, precio, empresa, limiteDeDatos, fechaInstalado, id_c
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._habitacionTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._padresTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.padres.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._padresTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

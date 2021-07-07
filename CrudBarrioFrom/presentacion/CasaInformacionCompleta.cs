@@ -18,11 +18,7 @@ namespace CrudBarrioFrom.presentacion
             InitializeComponent();
             this.id = id;
         }
-        public CasaInformacionCompleta()
-        {
-            InitializeComponent();
-        }
-
+        
         private void CasaInformacionCompleta_Load(object sender, EventArgs e)
         {
             this.casasTableAdapter.Fill(this.dataSet1.casas);

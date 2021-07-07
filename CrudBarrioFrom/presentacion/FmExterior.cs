@@ -189,7 +189,7 @@ namespace CrudBarrioFrom.presentacion
                 long id = getId();
                 if (id != 0)
                 {
-                    AddHijo agregarPadreFm = new AddHijo(id, this);
+                    AddExterior agregarPadreFm = new AddExterior(id, this);
                     agregarPadreFm.ShowDialog();
                 }
                 refrescar();
@@ -198,6 +198,12 @@ namespace CrudBarrioFrom.presentacion
         private void refrescar()
         {
             this.exteriorTableAdapter.Fill(this.dataSet1.exterior);
+
+        }
+
+        public void refrescarGrilla()
+        {
+            refrescar();
 
         }
 
@@ -211,6 +217,12 @@ namespace CrudBarrioFrom.presentacion
             {
                 return 0;
             }
+        }
+
+        private void agregarButton_Click(object sender, EventArgs e)
+        {
+            AddExterior agregarPadre = new AddExterior(this);
+            agregarPadre.ShowDialog();            
         }
     }
 }

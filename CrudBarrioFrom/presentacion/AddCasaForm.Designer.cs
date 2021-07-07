@@ -176,9 +176,18 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.casasTableAdapter = null;
             this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.exteriorTableAdapter = null;
+            this.tableAdapterManager.habitacionTableAdapter = null;
+            this.tableAdapterManager.mascotaTableAdapter = null;
+            this.tableAdapterManager.mueblesTableAdapter = null;
+            this.tableAdapterManager.padresTableAdapter = null;
+            this.tableAdapterManager.servicioAguaTableAdapter = null;
+            this.tableAdapterManager.servicioCableTableAdapter = null;
+            this.tableAdapterManager.servicioElectricidadTableAdapter = null;
+            this.tableAdapterManager.servicioInternetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CrudBarrioFrom.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // FmCasa
+            // AddCasaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,7 +206,7 @@ namespace CrudBarrioFrom.presentacion
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FmCasa";
+            this.Name = "AddCasaForm";
             this.Text = "Datos de la casa";
             this.Load += new System.EventHandler(this.FmCasa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.casasBindingSource)).EndInit();

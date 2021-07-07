@@ -59,6 +59,60 @@ namespace CrudBarrioFrom.presentacion
             ((System.ComponentModel.ISupportInitialize)(this.mascotaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // familiaLabel
+            // 
+            familiaLabel.AutoSize = true;
+            familiaLabel.Location = new System.Drawing.Point(30, 37);
+            familiaLabel.Name = "familiaLabel";
+            familiaLabel.Size = new System.Drawing.Size(39, 13);
+            familiaLabel.TabIndex = 3;
+            familiaLabel.Text = "familia:";
+            // 
+            // dietaLabel
+            // 
+            dietaLabel.AutoSize = true;
+            dietaLabel.Location = new System.Drawing.Point(30, 63);
+            dietaLabel.Name = "dietaLabel";
+            dietaLabel.Size = new System.Drawing.Size(33, 13);
+            dietaLabel.TabIndex = 5;
+            dietaLabel.Text = "dieta:";
+            // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(30, 89);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(45, 13);
+            nombreLabel.TabIndex = 7;
+            nombreLabel.Text = "nombre:";
+            // 
+            // tipoLabel
+            // 
+            tipoLabel.AutoSize = true;
+            tipoLabel.Location = new System.Drawing.Point(30, 115);
+            tipoLabel.Name = "tipoLabel";
+            tipoLabel.Size = new System.Drawing.Size(27, 13);
+            tipoLabel.TabIndex = 9;
+            tipoLabel.Text = "tipo:";
+            // 
+            // edadLabel
+            // 
+            edadLabel.AutoSize = true;
+            edadLabel.Location = new System.Drawing.Point(30, 141);
+            edadLabel.Name = "edadLabel";
+            edadLabel.Size = new System.Drawing.Size(34, 13);
+            edadLabel.TabIndex = 11;
+            edadLabel.Text = "edad:";
+            // 
+            // id_casaLabel
+            // 
+            id_casaLabel.AutoSize = true;
+            id_casaLabel.Location = new System.Drawing.Point(30, 167);
+            id_casaLabel.Name = "id_casaLabel";
+            id_casaLabel.Size = new System.Drawing.Size(44, 13);
+            id_casaLabel.TabIndex = 13;
+            id_casaLabel.Text = "id casa:";
+            // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "DataSet1";
@@ -79,7 +133,6 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager.casasTableAdapter = null;
             this.tableAdapterManager.exteriorTableAdapter = null;
             this.tableAdapterManager.habitacionTableAdapter = null;
-            //this.tableAdapterManager.hijosTableAdapter = null;
             this.tableAdapterManager.mascotaTableAdapter = this.mascotaTableAdapter;
             this.tableAdapterManager.mueblesTableAdapter = null;
             this.tableAdapterManager.padresTableAdapter = null;
@@ -89,15 +142,6 @@ namespace CrudBarrioFrom.presentacion
             this.tableAdapterManager.servicioInternetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CrudBarrioFrom.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // familiaLabel
-            // 
-            familiaLabel.AutoSize = true;
-            familiaLabel.Location = new System.Drawing.Point(30, 37);
-            familiaLabel.Name = "familiaLabel";
-            familiaLabel.Size = new System.Drawing.Size(39, 13);
-            familiaLabel.TabIndex = 3;
-            familiaLabel.Text = "familia:";
-            // 
             // familiaTextBox
             // 
             this.familiaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mascotaBindingSource, "familia", true));
@@ -105,15 +149,6 @@ namespace CrudBarrioFrom.presentacion
             this.familiaTextBox.Name = "familiaTextBox";
             this.familiaTextBox.Size = new System.Drawing.Size(100, 20);
             this.familiaTextBox.TabIndex = 4;
-            // 
-            // dietaLabel
-            // 
-            dietaLabel.AutoSize = true;
-            dietaLabel.Location = new System.Drawing.Point(30, 63);
-            dietaLabel.Name = "dietaLabel";
-            dietaLabel.Size = new System.Drawing.Size(33, 13);
-            dietaLabel.TabIndex = 5;
-            dietaLabel.Text = "dieta:";
             // 
             // dietaTextBox
             // 
@@ -123,15 +158,6 @@ namespace CrudBarrioFrom.presentacion
             this.dietaTextBox.Size = new System.Drawing.Size(100, 20);
             this.dietaTextBox.TabIndex = 6;
             // 
-            // nombreLabel
-            // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(30, 89);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(45, 13);
-            nombreLabel.TabIndex = 7;
-            nombreLabel.Text = "nombre:";
-            // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mascotaBindingSource, "nombre", true));
@@ -139,15 +165,6 @@ namespace CrudBarrioFrom.presentacion
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(100, 20);
             this.nombreTextBox.TabIndex = 8;
-            // 
-            // tipoLabel
-            // 
-            tipoLabel.AutoSize = true;
-            tipoLabel.Location = new System.Drawing.Point(30, 115);
-            tipoLabel.Name = "tipoLabel";
-            tipoLabel.Size = new System.Drawing.Size(27, 13);
-            tipoLabel.TabIndex = 9;
-            tipoLabel.Text = "tipo:";
             // 
             // tipoTextBox
             // 
@@ -157,15 +174,6 @@ namespace CrudBarrioFrom.presentacion
             this.tipoTextBox.Size = new System.Drawing.Size(100, 20);
             this.tipoTextBox.TabIndex = 10;
             // 
-            // edadLabel
-            // 
-            edadLabel.AutoSize = true;
-            edadLabel.Location = new System.Drawing.Point(30, 141);
-            edadLabel.Name = "edadLabel";
-            edadLabel.Size = new System.Drawing.Size(34, 13);
-            edadLabel.TabIndex = 11;
-            edadLabel.Text = "edad:";
-            // 
             // edadTextBox
             // 
             this.edadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mascotaBindingSource, "edad", true));
@@ -173,15 +181,6 @@ namespace CrudBarrioFrom.presentacion
             this.edadTextBox.Name = "edadTextBox";
             this.edadTextBox.Size = new System.Drawing.Size(100, 20);
             this.edadTextBox.TabIndex = 12;
-            // 
-            // id_casaLabel
-            // 
-            id_casaLabel.AutoSize = true;
-            id_casaLabel.Location = new System.Drawing.Point(30, 167);
-            id_casaLabel.Name = "id_casaLabel";
-            id_casaLabel.Size = new System.Drawing.Size(44, 13);
-            id_casaLabel.TabIndex = 13;
-            id_casaLabel.Text = "id casa:";
             // 
             // id_casaTextBox
             // 
@@ -235,7 +234,7 @@ namespace CrudBarrioFrom.presentacion
             this.Controls.Add(id_casaLabel);
             this.Controls.Add(this.id_casaTextBox);
             this.Name = "AddMascota";
-            this.Text = "AddHabitacion";
+            this.Text = "AddMascota";
             this.Load += new System.EventHandler(this.AddMascota_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mascotaBindingSource)).EndInit();

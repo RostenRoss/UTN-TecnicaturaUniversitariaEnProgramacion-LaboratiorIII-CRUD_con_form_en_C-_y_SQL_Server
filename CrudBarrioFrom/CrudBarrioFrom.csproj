@@ -84,6 +84,24 @@
     <Compile Include="presentacion\AddMueble.Designer.cs">
       <DependentUpon>AddMueble.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentacion\AddServicioAgua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddServicioAgua.Designer.cs">
+      <DependentUpon>AddServicioAgua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddServicioInternet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddServicioInternet.Designer.cs">
+      <DependentUpon>AddServicioInternet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\AddServicioLuz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddServicioLuz.Designer.cs">
+      <DependentUpon>AddServicioLuz.cs</DependentUpon>
+    </Compile>
     <Compile Include="presentacion\CasaInformacionCompleta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +168,12 @@
     <Compile Include="presentacion\AddHabitacion.Designer.cs">
       <DependentUpon>AddHabitacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentacion\AddServicioCable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\AddServicioCable.Designer.cs">
+      <DependentUpon>AddServicioCable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -172,6 +196,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presentacion\AddCasaForm.resx">
       <DependentUpon>AddCasaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddServicioAgua.resx">
+      <DependentUpon>AddServicioAgua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddServicioCable.resx">
+      <DependentUpon>AddServicioCable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddServicioInternet.resx">
+      <DependentUpon>AddServicioInternet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\AddServicioLuz.resx">
+      <DependentUpon>AddServicioLuz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentacion\CasaInformacionCompleta.resx">
       <DependentUpon>CasaInformacionCompleta.cs</DependentUpon>
