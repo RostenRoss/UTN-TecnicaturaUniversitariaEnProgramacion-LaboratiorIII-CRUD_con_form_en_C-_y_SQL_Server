@@ -6312,18 +6312,18 @@ namespace CrudBarrioFrom.DataSet1TableAdapters {
                 "                     SELECT ha.id_casa)  \r\n\r\nLEFT  OUTER JOIN exterior e ON EXIS" +
                 "TS(SELECT  c.id  \r\n                       INTERSECT \r\n                       SEL" +
                 "ECT e.id_casa) \r\n\r\nLEFT  OUTER JOIN muebles m ON EXISTS(SELECT  e.id  \r\n        " +
-                "               INTERSECT \r\n                       SELECT m.id_lugar)\r\n\r\nLEFT  OU" +
-                "TER JOIN muebles  ON EXISTS(SELECT  ha.id  \r\n                       INTERSECT \r\n" +
-                "                       SELECT m.id_lugar) \r\n\r\nLEFT  OUTER JOIN mascota ma ON EXI" +
-                "STS(SELECT  c.id  \r\n                       INTERSECT \r\n                       SE" +
-                "LECT ma.id_casa) \r\n\r\nLEFT  OUTER JOIN servicioElectricidad se ON EXISTS(SELECT  " +
-                "c.id  \r\n                       INTERSECT \r\n                       SELECT se.id_c" +
-                "asa) \r\n\r\nLEFT  OUTER JOIN servicioInternet si ON EXISTS(SELECT  c.id  \r\n        " +
-                "               INTERSECT \r\n                       SELECT si.id_casa) \r\n\r\nLEFT  O" +
-                "UTER JOIN servicioCable sc ON EXISTS(SELECT  c.id  \r\n                       INTE" +
-                "RSECT \r\n                       SELECT sc.id_casa)   \r\n\r\nLEFT  OUTER JOIN servici" +
-                "oAgua sa ON EXISTS(SELECT  c.id  \r\n                       INTERSECT \r\n          " +
-                "             SELECT sa.id_casa) \r\n\r\nWHERE c.id=@id";
+                "               INTERSECT \r\n                       SELECT m.id_exterior)\r\n\r\nLEFT " +
+                " OUTER JOIN muebles  ON EXISTS(SELECT  ha.id  \r\n                       INTERSECT" +
+                " \r\n                       SELECT m.id_habitacion) \r\n\r\nLEFT  OUTER JOIN mascota m" +
+                "a ON EXISTS(SELECT  c.id  \r\n                       INTERSECT \r\n                 " +
+                "      SELECT ma.id_casa) \r\n\r\nLEFT  OUTER JOIN servicioElectricidad se ON EXISTS(" +
+                "SELECT  c.id  \r\n                       INTERSECT \r\n                       SELECT" +
+                " se.id_casa) \r\n\r\nLEFT  OUTER JOIN servicioInternet si ON EXISTS(SELECT  c.id  \r\n" +
+                "                       INTERSECT \r\n                       SELECT si.id_casa) \r\n\r" +
+                "\nLEFT  OUTER JOIN servicioCable sc ON EXISTS(SELECT  c.id  \r\n                   " +
+                "    INTERSECT \r\n                       SELECT sc.id_casa)   \r\n\r\nLEFT  OUTER JOIN" +
+                " servicioAgua sa ON EXISTS(SELECT  c.id  \r\n                       INTERSECT \r\n  " +
+                "                     SELECT sa.id_casa) \r\n\r\nWHERE c.id=@id";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Id casa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();

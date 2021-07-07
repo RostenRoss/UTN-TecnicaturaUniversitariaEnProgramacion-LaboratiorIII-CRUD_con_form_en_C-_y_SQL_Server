@@ -26,3 +26,4 @@ D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.csproj.GenerateReso
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.csproj.CoreCompileInputs.cache
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.exe
 D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.pdb
+D:\C#\CrudBarrioForm\CrudBarrioFrom\obj\Debug\CrudBarrioFrom.csprojAssemblyReference.cache
